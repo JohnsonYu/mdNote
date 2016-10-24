@@ -131,4 +131,6 @@ _M.generate_sign = generate_sign
 _M.generate_xml = generate_xml
 _M.generate_callback_xml = generate_callback_xml
 _M.generate_nonce_str = generate_nonce_str
+_M.utf8_to_unicode = utf8_to_unicode
+_M.unicode_to_utf8 = unicode_to_utf8
 return _M

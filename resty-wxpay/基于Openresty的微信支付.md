@@ -15,15 +15,15 @@
 
 ####1. Resty 使用第三方LuaXml:
 
-&emsp;&emsp;&emsp;&emsp;我目前使用的Openresty 版本是 `nginx version: openresty/1.11.2.1`，这个版本使用的Luajit是`luajit-5.1`，所以我使用的LuaXml版本是[LuaXML_101012.zip](http://viremo.eludi.net/LuaXML/LuaXML_101012.zip)，下载解压后得下面左图
+&emsp;&emsp;我目前使用的Openresty 版本是 `nginx version: openresty/1.11.2.1`，这个版本使用的Luajit是`luajit-5.1`，所以我使用的LuaXml版本是[LuaXML_101012.zip](http://viremo.eludi.net/LuaXML/LuaXML_101012.zip)，下载解压后得下面左图
 	
 ![LuaXml_unzip](./images/Luaxml_unzip.png)
 	
-&emsp;&emsp;&emsp;&emsp;修改其中***Makefile*** 文件,(修改第三个红线处时，注意***你的操作系统***) 红色划线为我本机上安装Openresty 的地址，将这些修改为你本机的地址即可。
+&emsp;&emsp;修改其中***Makefile*** 文件,(修改第三个红线处时，注意***你的操作系统***) 红色划线为我本机上安装Openresty 的地址，将这些修改为你本机的地址即可。
 	
 ![LuaXml_unzip](./images/make.png)
 	
-&emsp;&emsp;&emsp;&emsp;修改后执行`make clean && make`，编译生成***LuaXML_lib.so***，将此目录下的 ***LuaXML_lib.so*** 和 ***LuaXml.lua*** 复制到Openresty安装目录下的***lualib***目录，如我的路径是：**/opt/openresty/lualib**
+&emsp;&emsp;修改后执行`make clean && make`，编译生成***LuaXML_lib.so***，将此目录下的 ***LuaXML_lib.so*** 和 ***LuaXml.lua*** 复制到Openresty安装目录下的***lualib***目录，如我的路径是：**/opt/openresty/lualib**
 
 ####2. 微信扫码支付时遇到的问题
 以下几个问题是扫码支付最容易遇到的坑：
