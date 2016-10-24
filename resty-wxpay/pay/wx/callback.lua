@@ -6,6 +6,8 @@ local ngx_time = ngx.time
 local http = require "resty.http"
 local config = require "lua.pay.wx.wx_config"
 local pay_utils = require("lua.pay.wx.pay_utils")
+local unicode_to_utf8 = pay_utils.unicode_to_utf8
+local utf8_to_unicode = pay_utils.utf8_to_unicode
 require "LuaXml"
 xml = require "xml"
 
@@ -51,9 +53,9 @@ end
 
 -- TODO 修改此处商品信息
 local product_id = callback_xml_table["product_id"] -- trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义
-local body = "test body"      -- 商品描述
-local detail = "test detail" -- 商品详情
-local attach = "test attach" -- 附加信息,判断当前的订单类型
+local body = utf8_to_unicode("test body")      -- 商品描述
+local detail = utf8_to_unicode("test detail") -- 商品详情
+local attach = utf8_to_unicode("test attach") -- 附加信息,判断当前的订单类型
 local out_trade_no = "O1234fdsfsaf2" -- 商户订单号
 local total_fee = 1 -- 商品总价，单位为分。
 
@@ -76,7 +78,7 @@ unifiedorder_table["sign"] = generate_sign(unifiedorder_table)
 
 local unifiedorder_xml_data = generate_xml(unifiedorder_table)
 -- 调用统一下单接口
-local xml_str = xml.str(unifiedorder_xml_data) -- change to xml string
+local xml_str = unicode_to_utf8(xml.str(unifiedorder_xml_data)) -- change to xml string
 local hc = http:new()
 local res, err = hc:request_uri("https://api.mch.weixin.qq.com/pay/unifiedorder", {
     method = "POST",
